@@ -40,7 +40,6 @@ $ curl -X POST http://localhost:8080/generate?count=5 # Generates $count article
 ## Production deployment
 
 A Docker container is built by this project's Github Action pipeline.
-
 An Helm Chart is also available for deployment on Kubernetes clusters
 
 // TBD: Documentation for Elastic Operator + Create ES users + Accessing Kibana

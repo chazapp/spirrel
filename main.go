@@ -36,9 +36,10 @@ func main() {
 						Required: true,
 					},
 					&cli.IntFlag{
-						Name:  "port",
-						Usage: "Port to run the API server on",
-						Value: 8080,
+						Name:    "port",
+						Aliases: []string{"p"},
+						Usage:   "Port to run the API server on",
+						Value:   8080,
 					},
 				},
 				Action: func(c *cli.Context) error {
