@@ -23,7 +23,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "spirrel.fullname" $. }}
+                name: {{ include "spirrel.fullname" . }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
