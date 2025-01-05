@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -16,6 +17,11 @@ func runServer(esURL string, esApiKey string, port int) error {
 	es, err := elasticsearch.NewClient(elasticsearch.Config{
 		Addresses: []string{esURL},
 		APIKey:    esApiKey,
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: true,
+			},
+		},
 	})
 	if err != nil {
 		return fmt.Errorf("failed to create Elasticsearch client: %v", err)
