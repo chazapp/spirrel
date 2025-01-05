@@ -8,6 +8,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+var (
+	Version = "dev"
+)
+
 func main() {
 	app := &cli.App{
 		Name:  "spirrel",
@@ -18,15 +22,17 @@ func main() {
 				Usage: "Run the API server",
 				Flags: []cli.Flag{
 					&cli.StringFlag{
-						Name:     "esUri",
-						Aliases:  []string{"s"},
-						Usage:    "Elasticsearch connection string",
-						Required: true,
+						Name:    "esUri",
+						Aliases: []string{"s"},
+						Usage:   "Elasticsearch host",
+						EnvVars: []string{"ELASTICSEARCH_HOST"},
+						Value:   "http://localhost:9200",
 					},
 					&cli.StringFlag{
 						Name:     "esApiKey",
 						Aliases:  []string{"k"},
-						Usage:    "Elasticsearch connection string",
+						Usage:    "Elasticsearch API Key",
+						EnvVars:  []string{"ELASTICSEARCH_API_KEY"},
 						Required: true,
 					},
 					&cli.IntFlag{
